@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Маркет · Админ-панель</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+
+        <section class="products-container">
+            <div class="shop-header">
+                <h1> Каталог сувенирной лавки ЧГУ</h1>
+                <div class="sort-bar">
+                    <span class="sort-label">Сортировать:</span>
+                    <button class="sort-btn active" data-sort="default"> По умолчанию</button>
+                    <button class="sort-btn" data-sort="asc"> Дешевле</button>
+                    <button class="sort-btn" data-sort="desc"> Дороже</button>
+                </div>
+            </div>
+            <div id="productsGrid" class="products-grid">
+                <div style="text-align: center; padding: 2rem;">Загрузка товаров...</div>
+            </div>
+        </section>
+
+        <aside id="adminPanel" class="admin-panel hidden">
+            <div class="admin-header">
+                <h2> Админ-панель</h2>
+                <button id="logoutAdminBtn" class="logout-btn">Выйти</button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="editId" value="">
+                <input type="text" id="productName" placeholder="Название товара" required autocomplete="off">
+                <input type="number" id="productPrice" placeholder="Цена (₽)" required step="0.01" min="0">
+                <input type="number" id="productStock" placeholder="Количество" required min="0" value="10">
+                <input type="text" id="productImage" placeholder="URL картинки" required>
+                <textarea id="productDesc" rows="2" placeholder="Описание товара"></textarea>
+                <button type="submit" id="submitBtn"> Добавить товар</button>
+                <button type="button" id="cancelEditBtn" class="hidden" style="background:#eef2f6; color:#1e293b;">Отменить</button>
+            </form>
+            <hr>
+            <p style="font-weight:500; font-size:0.85rem;"> Управление товарами</p>
+            <ul id="adminProductList" class="admin-product-list"></ul>
+        </aside>
+
+        <aside id="loginBlock" class="admin-panel">
+            <h2 style="font-size:1.3rem;"> Вход в админку</h2>
+            <input type="password" id="adminPassword" placeholder="Пароль">
+            <button id="loginBtn">Войти</button>
+            <p class="login-message">пароль: admin123</p>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
