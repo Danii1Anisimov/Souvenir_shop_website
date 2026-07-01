@@ -1,0 +1,42 @@
+.cat-btn {
+    background: #f1f5f9;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #475569;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.cat-btn.active {
+    background: #e31e24;
+    color: white;
+}
+
+.cat-btn:hover:not(.active) {
+    background: #e2e8f0;
+}
+
+.sort-btn {
+    background: #f1f5f9;
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #475569;
+    transition: all 0.2s;
+}
+
+.sort-btn.active {
+    background: #1e293b;
+    color: white;
+}
+
+.sort-btn:hover:not(.active) {
+    background: #e2e8f0;
+}
