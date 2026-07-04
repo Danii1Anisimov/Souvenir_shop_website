@@ -27,6 +27,7 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
     height: 370px;
+    background-size: cover;
     border-bottom: 4px solid #e31e24;
     isolation: isolate;
     display: flex;
