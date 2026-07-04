@@ -49,7 +49,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 2rem;
-    background-image: url('images/logo.jpg');
+    background-image: url('../images/logo.jpg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
