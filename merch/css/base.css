@@ -49,11 +49,10 @@ body {
   border-radius: 10px; 
   overflow: hidden; 
   margin-bottom: 2rem; 
-  background-image: url('https://trafaret-decor.art/sites/default/files/2023-05/chgu-3461.jpg'); 
+  background-image: url('../images/chgu-3461.jpg'); 
   background-size: cover;
   background-position: left top; 
   background-repeat: no-repeat; 
-  isolation: isolate; 
 }
 
 
