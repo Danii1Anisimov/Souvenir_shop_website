@@ -46,32 +46,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-}
-
-.logo-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.shop-header {
-    position: relative;
-    width: 100%;
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
+    border-radius: 10px; /* минимальное закругление */
     overflow: hidden;
     margin-bottom: 2rem;
     background-image: url('images/logo.jpg');
-    background-size: cover;
+    background-size: contain; /* картинка видна целиком */
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -85,7 +64,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 10px; /* минимальное закругление */
 }
 
 .shop-header h1 {
@@ -97,6 +76,7 @@ body {
     text-align: center;
     padding: 1rem;
 }
+
 .search-input {
     width: 100%;
     padding: 0.8rem 1.2rem;
