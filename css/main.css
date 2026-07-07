@@ -168,20 +168,19 @@ body {
     transform: translateY(-3px);
 }
 
-.icon-circle {
+.channel-logo {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     background: #f1f5f9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    transition: background 0.2s;
+    padding: 0.6rem;
+    object-fit: contain;
+    transition: background 0.2s, transform 0.2s;
 }
 
-.channel-icon:hover .icon-circle {
+.channel-icon:hover .channel-logo {
     background: #e31e24;
+    transform: scale(1.1);
 }
 
 .icon-label {
