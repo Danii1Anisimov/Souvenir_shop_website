@@ -21,15 +21,17 @@ function renderProducts(products) {
 
     if (isAdmin) {
         const adminBar = document.createElement('div');
-        adminBar.style.cssText = 'grid-column:1/-1;display:flex;gap:0.5rem;align-items:center;';
+        adminBar.style.cssText = 'grid-column:1/-1;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;';
         adminBar.innerHTML = `
             <button class="modal-btn small ${showArchived ? 'primary' : ''}" id="toggleArchivedBtn">
                 ${showArchived ? '📋 Обычные товары' : '📦 Архив'}
             </button>
+            <button class="modal-btn small danger" id="resetProductsBtn">🔄 Сброс</button>
             <span style="font-size:0.75rem;color:#64748b;">${showArchived ? 'Просмотр архива' : 'Обычный режим'}</span>
         `;
         grid.appendChild(adminBar);
         document.getElementById('toggleArchivedBtn').addEventListener('click', toggleArchived);
+        document.getElementById('resetProductsBtn').addEventListener('click', resetProducts);
     }
 
     sorted.forEach(product => {
