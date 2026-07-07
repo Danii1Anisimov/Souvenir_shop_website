@@ -146,7 +146,19 @@ body {
     border-bottom-color: #e31e24;
     color: #b11218;
 }
+.channel-link {
+    display: block;
+    color: #4b4b4b;
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 0.25rem 0;
+    transition: color 0.2s;
+    line-height: 1.4;
+}
 
+.channel-link:hover {
+    color: #e31e24;
+}
 .footer-note {
     background: #f8f8f8;
     border-top: 1px solid #eaeaea;
