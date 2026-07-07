@@ -12,7 +12,7 @@ function renderProducts(products) {
     const filtered = getFilteredProducts(products);
     const sorted = getSortedProducts(filtered);
 
-    if (sorted.length === 0) {
+    if (sorted.length === 0 && !isAdmin) {
         grid.innerHTML = '<div class="no-results">🔍 Товары не найдены. Попробуйте изменить запрос или категорию.</div>';
         return;
     }
@@ -29,6 +29,7 @@ function renderProducts(products) {
         const img = product.image || 'https://placehold.co/400x400/e9eef3/8b9cb0?text=No+Image';
         const productAvailable = isProductAvailable(product);
         const isFullyOutOfStock = !productAvailable;
+        const isArchived = product.archived === true;
         
         let priceHtml = '';
         let variantsHtml = '';
@@ -59,19 +60,44 @@ function renderProducts(products) {
         }
 
         return `
-            <div class="product-card ${isFullyOutOfStock ? 'out-of-stock' : ''}" data-id="${escapeHtml(product.id)}">
-                ${isFullyOutOfStock ? '<div class="out-of-stock-badge">Нет в наличии</div>' : ''}
+            <div class="product-card ${isFullyOutOfStock ? 'out-of-stock' : ''} ${isArchived ? 'archived' : ''}" data-id="${escapeHtml(product.id)}">
+                ${isFullyOutOfStock && !isArchived ? '<div class="out-of-stock-badge">Нет в наличии</div>' : ''}
+                ${isArchived ? '<div class="out-of-stock-badge archived-badge">В архиве</div>' : ''}
                 <div class="product-image-wrapper">
-                    <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://placehold.co/400x400/e9eef3/8b9cb0?text=Error'" class="${isFullyOutOfStock ? 'out-of-stock-image' : ''}">
+                    <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://placehold.co/400x400/e9eef3/8b9cb0?text=Error'" class="${isFullyOutOfStock && !isArchived ? 'out-of-stock-image' : ''}">
                 </div>
                 <h3>${escapeHtml(product.name)}</h3>
                 ${priceHtml}
                 ${variantsHtml}
                 ${product.description ? `<p class="product-description">${escapeHtml(product.description)}</p>` : ''}
                 <span class="product-category">${categoryNames[product.category] || 'Прочее'}</span>
+                ${isAdmin ? `
+                    <div class="admin-actions show">
+                        <button class="modal-btn small" onclick="event.stopPropagation(); showProductModal(products.find(p=>p.id==='${product.id}'))">✏️</button>
+                        ${product.archived ? 
+                            `<button class="modal-btn small primary" onclick="event.stopPropagation(); restoreProduct('${product.id}')">↩️</button>` :
+                            `<button class="modal-btn small" onclick="event.stopPropagation(); archiveProduct('${product.id}')">📦</button>`
+                        }
+                        <button class="modal-btn small danger" onclick="event.stopPropagation(); deleteProduct('${product.id}')">🗑️</button>
+                    </div>
+                ` : ''}
             </div>
         `;
     }).join('');
+
+    // Кнопка добавления товара для админа
+    if (isAdmin) {
+        const addCard = document.createElement('div');
+        addCard.className = 'product-card admin-add-card';
+        addCard.innerHTML = `
+            <div class="admin-add-content">
+                <span style="font-size:3rem;">+</span>
+                <span style="font-size:1rem;font-weight:600;">Добавить товар</span>
+            </div>
+        `;
+        addCard.addEventListener('click', () => showProductModal(null));
+        grid.appendChild(addCard);
+    }
 
     // Обработчик изменения варианта (только для доступных)
     document.querySelectorAll('.variant-option input[type="radio"]:not([disabled])').forEach(radio => {
