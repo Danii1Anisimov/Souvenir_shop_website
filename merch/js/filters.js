@@ -5,6 +5,10 @@ let searchQuery = '';
 function getFilteredProducts(products) {
     let filtered = [...products];
     
+    if (!isAdmin) {
+        filtered = filtered.filter(p => !p.archived);
+    }
+    
     if (currentCategory !== 'all') {
         filtered = filtered.filter(p => p.category === currentCategory);
     }
