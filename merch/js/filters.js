@@ -28,19 +28,43 @@ function getFilteredProducts(products) {
 }
 
 function getSortedProducts(filteredProducts) {
+    let sorted = [...filteredProducts];
+    
+    // Всегда помещаем полностью отсутствующие товары в конец списка
+    sorted.sort((a, b) => {
+        const aAvailable = isProductAvailable(a) ? 0 : 1;
+        const bAvailable = isProductAvailable(b) ? 0 : 1;
+        return aAvailable - bAvailable;
+    });
+    
+    // Применяем сортировку по цене, сохраняя группировку по наличию
     if (currentSortMode === 'asc') {
-        return filteredProducts.sort((a, b) => {
-            const priceA = a.variants ? Math.min(...a.variants.map(v => v.price)) : a.price;
-            const priceB = b.variants ? Math.min(...b.variants.map(v => v.price)) : b.price;
+        sorted.sort((a, b) => {
+            const aAvailable = isProductAvailable(a) ? 0 : 1;
+            const bAvailable = isProductAvailable(b) ? 0 : 1;
+            
+            if (aAvailable !== bAvailable) {
+                return aAvailable - bAvailable;
+            }
+            
+            const priceA = a.variants ? Math.min(...a.variants.map(v => v.price)) : (a.price || 0);
+            const priceB = b.variants ? Math.min(...b.variants.map(v => v.price)) : (b.price || 0);
             return priceA - priceB;
         });
-    }
-    if (currentSortMode === 'desc') {
-        return filteredProducts.sort((a, b) => {
-            const priceA = a.variants ? Math.max(...a.variants.map(v => v.price)) : a.price;
-            const priceB = b.variants ? Math.max(...b.variants.map(v => v.price)) : b.price;
+    } else if (currentSortMode === 'desc') {
+        sorted.sort((a, b) => {
+            const aAvailable = isProductAvailable(a) ? 0 : 1;
+            const bAvailable = isProductAvailable(b) ? 0 : 1;
+            
+            if (aAvailable !== bAvailable) {
+                return aAvailable - bAvailable;
+            }
+            
+            const priceA = a.variants ? Math.max(...a.variants.map(v => v.price)) : (a.price || 0);
+            const priceB = b.variants ? Math.max(...b.variants.map(v => v.price)) : (b.price || 0);
             return priceB - priceA;
         });
     }
-    return filteredProducts;
+    
+    return sorted;
 }

@@ -10,6 +10,12 @@
         padding: 3rem 1.5rem;
         height: 280px;
     }
+    .header-overlay {
+        padding: 0 1.5rem 2.5rem 1.5rem;
+    }
+    .header-overlay p {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 640px) {
@@ -18,15 +24,15 @@
         gap: 1rem;
         padding: 1.2rem;
     }
+    .brand-header {
+        padding: 2rem 1.2rem;
+        height: 220px;
+    }
     .brand-header h1 {
         font-size: 1.4rem;
     }
     .brand-header p {
         font-size: 0.8rem;
-    }
-    .brand-header {
-        padding: 2rem 1.2rem;
-        height: 220px;
     }
     .card-title {
         font-size: 1.3rem;
@@ -43,6 +49,12 @@
         text-align: center;
         gap: 0.5rem;
         font-size: 0.7rem;
+    }
+    .header-overlay {
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+    .header-overlay p {
+        font-size: 1.1rem;
     }
 }
 
@@ -66,5 +78,11 @@
     }
     .card-link {
         font-size: 0.75rem;
+    }
+    .header-overlay {
+        padding: 0 1rem 1.5rem 1rem;
+    }
+    .header-overlay p {
+        font-size: 0.95rem;
     }
 }

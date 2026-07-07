@@ -1,70 +1,17 @@
 @media (max-width: 900px) {
-    .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1rem;
-    }
-    
-    .filter-sort-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-    }
-    
-    .category-filters {
-        width: 100%;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        padding-bottom: 0.3rem;
-    }
-    
-    .cat-btn {
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-    
-    .sort-bar {
-        width: 100%;
-        justify-content: flex-start;
-    }
-    
     .shop-header h1 {
         font-size: 1.4rem;
     }
     
-    .controls-bar {
-        padding: 1rem;
-    }
-    
     .shop-header {
         padding: 1rem;
+        min-height: 250px;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 0.5rem;
-    }
-    
-    .app-layout {
-        margin-top: 60px;
-        padding: 0 0.5rem 1.5rem;
-    }
-    
-    .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 0.8rem;
-    }
-    
-    .product-card {
-        padding: 1rem;
-    }
-    
-    .product-card h3 {
-        font-size: 1rem;
-    }
-    
-    .product-card .price {
-        font-size: 1.1rem;
+        padding: 0;
     }
     
     .back-button {
@@ -74,8 +21,13 @@
         font-size: 0.85rem;
     }
     
-    .variant-option label {
-        font-size: 0.8rem;
+    .shop-header {
+        min-height: 200px;
+        border-radius: 8px;
+    }
+    
+    .shop-header h1 {
+        font-size: 1.2rem;
     }
     
     .shop-footer {
@@ -91,60 +43,6 @@
 }
 
 @media (max-width: 480px) {
-    .app-layout {
-        margin-top: 50px;
-    }
-    
-    .products-grid {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-    }
-    
-    .shop-header h1 {
-        font-size: 1.2rem;
-    }
-    
-    .search-input {
-        padding: 0.7rem 1rem;
-        font-size: 0.9rem;
-        border-radius: 12px;
-    }
-    
-    .cat-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-    }
-    
-    .sort-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-    }
-    
-    .sort-label {
-        font-size: 0.7rem;
-    }
-    
-    .product-card {
-        padding: 0.8rem;
-        border-radius: 18px;
-    }
-    
-    .product-card img {
-        border-radius: 12px;
-    }
-    
-    .product-card h3 {
-        font-size: 0.95rem;
-    }
-    
-    .product-card .price {
-        font-size: 1rem;
-    }
-    
-    .variant-option label {
-        font-size: 0.75rem;
-    }
-    
     .back-button {
         top: 8px;
         left: 8px;
@@ -153,13 +51,23 @@
         border-radius: 20px;
     }
     
-    .controls-bar {
-        padding: 0.8rem;
-        border-radius: 18px;
+    .shop-header {
+        min-height: 160px;
+        border-radius: 6px;
+        margin-bottom: 1rem;
     }
     
-    .shop-header {
+    .shop-header h1 {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+    
+    .shop-footer {
         padding: 0.8rem;
-        border-radius: 18px;
+    }
+    
+    .footer-content {
+        gap: 0.3rem;
+        font-size: 0.7rem;
     }
 }

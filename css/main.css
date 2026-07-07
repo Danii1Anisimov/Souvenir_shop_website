@@ -22,8 +22,7 @@ body {
 .brand-header {
     position: relative;
     background: #1a1a1a;
-    background-image: url('https://sun9-79.userapi.com/HojrFAPC_vehK0AlEPEb5sfkSGYuWsIWeViC6Q/bpzUmNObzbA.jpg');
-    background-size: auto 370px;
+    background-image: url('../images/bpzUmNObzbA.png');
     background-position: top center;
     background-repeat: no-repeat;
     height: 370px;
@@ -45,27 +44,17 @@ body {
     background: linear-gradient(95deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0 4rem;
+    justify-content: flex-end;
+    padding: 0 4rem 3rem 4rem;
     z-index: 1;
 }
 
-.header-overlay h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    margin-bottom: 0.35rem;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
 .header-overlay p {
-    color: rgba(255,255,255,0.85);
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    backdrop-filter: blur(2px);
-    display: inline-block;
+    color: rgba(255,255,255,0.95);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
 }
 
 .services-grid {
