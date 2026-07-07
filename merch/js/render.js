@@ -23,12 +23,13 @@ function renderProducts(products) {
         const adminBar = document.createElement('div');
         adminBar.style.cssText = 'grid-column:1/-1;display:flex;gap:0.5rem;align-items:center;';
         adminBar.innerHTML = `
-            <button class="modal-btn small ${showArchived ? 'primary' : ''}" onclick="toggleArchived()">
-                ${showArchived ? '📋 Обычные' : '📦 Архив'} ${showArchived ? '' : ''}
+            <button class="modal-btn small ${showArchived ? 'primary' : ''}" id="toggleArchivedBtn">
+                ${showArchived ? '📋 Обычные товары' : '📦 Архив'}
             </button>
             <span style="font-size:0.75rem;color:#64748b;">${showArchived ? 'Просмотр архива' : 'Обычный режим'}</span>
         `;
         grid.appendChild(adminBar);
+        document.getElementById('toggleArchivedBtn').addEventListener('click', toggleArchived);
     }
 
     sorted.forEach(product => {
@@ -76,46 +77,48 @@ function renderProducts(products) {
             <h3>${escapeHtml(product.name)}</h3>
             ${priceHtml}
             ${variantsHtml}
-            ${product.description ? `<p class="product-description">${escapeHtml(product.description)}</p>` : ''}
-            <span class="product-category">${escapeHtml(product.category) || 'Без категории'}</span>
-            ${isAdmin ? `
-                <div class="admin-actions show">
-                    <button class="modal-btn small" id="edit-${product.id}">✏️</button>
-                    ${product.archived ? 
-                        `<button class="modal-btn small primary" id="restore-${product.id}">↩️</button>` :
-                        `<button class="modal-btn small" id="archive-${product.id}">📦</button>`
-                    }
-                    <button class="modal-btn small danger" id="delete-${product.id}">🗑️</button>
-                </div>
-            ` : ''}
+            <div class="product-bottom">
+                ${product.description ? `<p class="product-description">${escapeHtml(product.description)}</p>` : ''}
+                <span class="product-category">${escapeHtml(product.category) || 'Без категории'}</span>
+                ${isAdmin ? `
+                    <div class="admin-actions show">
+                        <button class="modal-btn small edit-product-btn">✏️</button>
+                        ${product.archived ? 
+                            `<button class="modal-btn small primary restore-product-btn">↩️</button>` :
+                            `<button class="modal-btn small archive-product-btn">📦</button>`
+                        }
+                        <button class="modal-btn small danger delete-product-btn">🗑️</button>
+                    </div>
+                ` : ''}
+            </div>
         `;
         
         grid.appendChild(card);
         
         if (isAdmin) {
-            card.querySelector(`#edit-${product.id}`).addEventListener('click', (e) => {
+            card.querySelector('.edit-product-btn').addEventListener('click', (e) => {
                 e.stopPropagation();
                 showProductModal(products.find(p => p.id === product.id));
             });
             if (!product.archived) {
-                card.querySelector(`#archive-${product.id}`).addEventListener('click', (e) => {
+                card.querySelector('.archive-product-btn').addEventListener('click', (e) => {
                     e.stopPropagation();
                     archiveProduct(product.id);
                 });
             } else {
-                card.querySelector(`#restore-${product.id}`).addEventListener('click', (e) => {
+                card.querySelector('.restore-product-btn').addEventListener('click', (e) => {
                     e.stopPropagation();
                     restoreProduct(product.id);
                 });
             }
-            card.querySelector(`#delete-${product.id}`).addEventListener('click', (e) => {
+            card.querySelector('.delete-product-btn').addEventListener('click', (e) => {
                 e.stopPropagation();
                 deleteProduct(product.id);
             });
         }
     });
 
-    if (isAdmin) {
+    if (isAdmin && !showArchived) {
         const addCard = document.createElement('div');
         addCard.className = 'product-card admin-add-card';
         addCard.innerHTML = `
