@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>ЧГУ | Панель сервисов</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="brand-header">
+            <div class="header-overlay">
+                <p>Цифровые сервисы для сотрудников и студентов</p>
+            </div>
+        </div>
+
+        <div class="services-grid">
+            <!-- IT-сервисы -->
+            <div class="service-card" data-service="it-services">
+                <div class="card-accent"></div>
+                <div class="card-content">
+                    <div class="card-icon">🖥️⚙️</div>
+                    <div class="card-title">IT-сервисы</div>
+                    <div class="card-description">Личный кабинет студента, Мероприятия, Расписание, Электронные заявки</div>
+                    <span class="card-link">Перейти в IT-портал <span>→</span></span>
+                </div>
+            </div>
+
+            <!-- Официальные каналы связи -->
+            <div class="service-card" data-service="official-channels">
+                <div class="card-accent"></div>
+                <div class="card-content">
+                    <div class="card-icon">📢📧</div>
+                    <div class="card-title">Официальные каналы связи</div>
+                    <div class="card-description">Корпоративная почта, Telegram-канал, ВКонтакте, Rutube, Яндекс.Дзен</div>
+                    <span class="card-link">Все каналы связи <span>→</span></span>
+                </div>
+            </div>
+
+            <!-- Боты -->
+            <div class="service-card" data-service="bots">
+                <div class="card-accent"></div>
+                <div class="card-content">
+                    <div class="card-icon">🤖💬</div>
+                    <div class="card-title">Боты</div>
+                    <div class="card-description">Бот первокурсника, Единый деканат, Поддержка студентов, ВУЦ бот, Путеводитель по университету</div>
+                    <span class="card-link">Показать всех ботов <span>→</span></span>
+                </div>
+            </div>
+
+            <!-- Сувенирная продукция -->
+            <div class="service-card" data-service="merch" data-url="merch/index.html">
+                <div class="card-accent"></div>
+                <div class="card-content">
+                    <div class="card-icon">🎁🧢</div>
+                    <div class="card-title">Сувенирная продукция</div>
+                    <div class="card-description">Брендированная одежда, кружки, корпоративный мерч, канцелярия и аксессуары</div>
+                    <span class="card-link">В магазин мерча <span>→</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>© 2026 ЧГУ | Единая платформа сервисов</span>
+            <div class="badge-mini">доступно авторизованным пользователям</div>
+        </div>
+    </div>
+
+    <div id="toastMsg" class="toast-message"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
