@@ -7,8 +7,14 @@ function getFilteredProducts(products) {
     
     if (!isAdmin) {
         filtered = filtered.filter(p => !p.archived);
-    } else if (!showArchived) {
+    }
+    
+    if (isAdmin && !showArchived) {
         filtered = filtered.filter(p => !p.archived);
+    }
+    
+    if (isAdmin && showArchived) {
+        filtered = filtered.filter(p => p.archived === true);
     }
     
     if (currentCategory !== 'all') {
