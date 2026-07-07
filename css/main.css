@@ -25,7 +25,7 @@ body {
     background-image: url('../images/bpzUmNObzbA.png');
     background-position: top center;
     background-repeat: no-repeat;
-    height: 280px;
+    height: 370px;
     background-size: cover;
     border-bottom: 4px solid #e31e24;
     isolation: isolate;
@@ -51,7 +51,7 @@ body {
 
 .header-overlay p {
     color: rgba(255,255,255,0.95);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     letter-spacing: 0.5px;
@@ -60,9 +60,9 @@ body {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 1rem;
-    max-width: 1000px;
+    gap: 1.8rem;
+    padding: 2.2rem 2rem 2.5rem 2rem;
+    max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     align-items: start;
@@ -70,8 +70,8 @@ body {
 
 .service-card {
     background: #ffffff;
-    border-radius: 1.2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 0 0 1px #e5e5e5;
+    border-radius: 1.5rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 0 0 1px #e5e5e5;
     transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s;
     overflow: hidden;
     cursor: pointer;
@@ -96,44 +96,44 @@ body {
 }
 
 .service-card:nth-child(1) .card-accent { background: #e31e24; }
-.service-card:nth-child(2) .card-accent { background: #e31e24; }
-.service-card:nth-child(3) .card-accent { background: #e31e24; }
-.service-card:nth-child(4) .card-accent { background: #e31e24; }
+.service-card:nth-child(2) .card-accent { background: #2c2c2c; }
+.service-card:nth-child(3) .card-accent { background: #b91c1c; }
+.service-card:nth-child(4) .card-accent { background: #d32f2f; }
 
 .card-content {
-    padding: 1rem 1.2rem 1rem 1.2rem;
+    padding: 1.7rem 1.5rem 1.9rem 1.5rem;
     display: flex;
     flex-direction: column;
 }
 
 .card-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.4rem;
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
     display: inline-block;
 }
 
 .card-title {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #000000;
     letter-spacing: -0.3px;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.8rem;
     line-height: 1.2;
 }
 
 .card-description {
-    font-size: 0.8rem;
+    font-size: 0.92rem;
     color: #4b4b4b;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
 }
 
 .card-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     font-weight: 600;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: #e31e24;
     text-decoration: none;
     border-bottom: 1.5px solid rgba(227, 30, 36, 0.25);
@@ -151,7 +151,7 @@ body {
 .channels-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.8rem;
     margin-top: 0.3rem;
 }
 
@@ -160,7 +160,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    gap: 0.2rem;
+    gap: 0.25rem;
     transition: transform 0.2s;
 }
 
@@ -169,11 +169,11 @@ body {
 }
 
 .channel-logo {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     background: #f1f5f9;
-    padding: 0.3rem;
+    padding: 0.35rem;
     object-fit: contain;
     transition: background 0.2s, transform 0.2s;
 }
@@ -184,7 +184,7 @@ body {
 }
 
 .icon-label {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 600;
     color: #64748b;
     text-transform: uppercase;
