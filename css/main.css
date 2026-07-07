@@ -65,7 +65,7 @@ body {
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
-    align-items: start;
+    align-items: stretch;
 }
 
 .service-card {
@@ -77,7 +77,6 @@ body {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: fit-content;
 }
 
 .service-card:hover {
@@ -92,7 +91,6 @@ body {
 .card-accent {
     height: 6px;
     width: 100%;
-    background-color: #e31e24;
     background: #e31e24;
 }
 
@@ -100,6 +98,7 @@ body {
     padding: 1.7rem 1.5rem 1.9rem 1.5rem;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .card-icon {
@@ -136,6 +135,7 @@ body {
     transition: gap 0.2s, border-color 0.2s;
     width: fit-content;
     padding-bottom: 2px;
+    margin-top: auto;
 }
 
 .card-link:hover {
