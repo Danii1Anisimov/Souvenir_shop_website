@@ -538,3 +538,38 @@
 .product-card.archived:hover {
     opacity: 0.8;
 }
+.product-card {
+    position: relative;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #1e293b;
+}
+
+.product-card .price {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #e31e24;
+    margin: 0.5rem 0;
+}
+
+.product-card .product-description {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.product-category {
+    display: inline-block;
+    background: #f1f5f9;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-top: 0.3rem;
+    width: fit-content;
+}
