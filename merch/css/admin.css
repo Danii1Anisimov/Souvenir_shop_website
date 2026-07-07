@@ -1,7 +1,7 @@
 .admin-button {
     position: fixed;
     top: 20px;
-    right: 80px;
+    right: 20px;
     background: white;
     border: 2px solid #e31e24;
     color: #e31e24;
@@ -244,7 +244,7 @@
 @media (max-width: 640px) {
     .admin-button {
         top: 10px;
-        right: 70px;
+        right: 10px;
         width: 36px;
         height: 36px;
         font-size: 1rem;
@@ -258,11 +258,11 @@
     }
     
     .scroll-top {
-        top: 60px;
+        top: 55px;
     }
     
     .scroll-bottom {
-        top: 105px;
+        top: 100px;
     }
     
     .modal-content {
