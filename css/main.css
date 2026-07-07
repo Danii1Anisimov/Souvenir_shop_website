@@ -148,18 +148,48 @@ body {
     color: #b11218;
 }
 
-.channel-link {
-    display: block;
-    color: #4b4b4b;
-    text-decoration: none;
-    font-size: 0.8rem;
-    padding: 0.25rem 0;
-    transition: color 0.2s;
-    line-height: 1.4;
+.channels-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
 }
 
-.channel-link:hover {
-    color: #e31e24;
+.channel-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.3rem;
+    transition: transform 0.2s;
+}
+
+.channel-icon:hover {
+    transform: translateY(-3px);
+}
+
+.icon-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: background 0.2s;
+}
+
+.channel-icon:hover .icon-circle {
+    background: #e31e24;
+}
+
+.icon-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .footer-note {
