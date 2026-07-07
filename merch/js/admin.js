@@ -17,7 +17,9 @@ function hideLoginModal() {
 function updateCategorySuggestions() {
     const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
     const datalist = document.getElementById('categorySuggestions');
-    datalist.innerHTML = categories.map(c => `<option value="${c}">`).join('');
+    if (datalist) {
+        datalist.innerHTML = categories.map(c => `<option value="${c}">`).join('');
+    }
 }
 
 function showProductModal(product) {
@@ -148,7 +150,24 @@ function restoreProduct(id) {
 
 function toggleArchived() {
     showArchived = !showArchived;
+    if (showArchived) {
+        currentCategory = 'all';
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        const allBtn = document.querySelector('.cat-btn[data-category="all"]');
+        if (allBtn) allBtn.classList.add('active');
+    }
     renderProducts(products);
+}
+
+function resetProducts() {
+    if (confirm('Сбросить все товары до заводских настроек? Все изменения будут потеряны.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        products = getDefaultProducts();
+        saveProducts(products);
+        updateCategoryButtons();
+        showArchived = false;
+        renderProducts(products);
+    }
 }
 
 function updateCategoryButtons() {
@@ -201,10 +220,8 @@ function initAdmin() {
     });
     
     document.getElementById('loginCancel').addEventListener('click', hideLoginModal);
-    
     document.getElementById('productSave').addEventListener('click', saveProduct);
     document.getElementById('productCancel').addEventListener('click', hideProductModal);
-    
     document.getElementById('addVariant').addEventListener('click', () => addVariantRow());
     
     document.getElementById('scrollTopBtn').addEventListener('click', () => {
