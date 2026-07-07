@@ -92,6 +92,7 @@ body {
 .card-accent {
     height: 6px;
     width: 100%;
+    background-color: #e31e24;
     background: #e31e24;
 }
 
