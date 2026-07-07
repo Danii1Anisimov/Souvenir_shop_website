@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Сувенирная лавка ЧГУ</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <a href="../index.html" class="back-button">← На главную</a>
+        
+        <div class="app-layout">
+            <section class="products-container">
+                <div class="shop-header">
+                    <h1>Сувенирная лавка ЧГУ</h1>
+                </div>
+                
+                <div class="controls-bar">
+                    <div class="search-wrapper">
+                        <input type="text" id="searchInput" placeholder="🔍 Поиск по названию..." class="search-input">
+                    </div>
+                    
+                    <div class="filter-sort-bar">
+                        <div class="category-filters">
+                            <button class="cat-btn active" data-category="all">Все товары</button>
+                            <button class="cat-btn" data-category="clothing">👕 Одежда</button>
+                            <button class="cat-btn" data-category="accessories">🧢 Аксессуары</button>
+                            <button class="cat-btn" data-category="stationery">✏️ Канцелярия</button>
+                            <button class="cat-btn" data-category="souvenirs">🎁 Сувениры</button>
+                            <button class="cat-btn" data-category="other">📦 Прочее</button>
+                        </div>
+                        
+                        <div class="sort-bar">
+                            <span class="sort-label">Сортировка:</span>
+                            <button class="sort-btn active" data-sort="default">📋 По умолчанию</button>
+                            <button class="sort-btn" data-sort="asc">⬆️ Дешевле</button>
+                            <button class="sort-btn" data-sort="desc">⬇️ Дороже</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="productsGrid" class="products-grid">
+                    <div style="text-align: center; padding: 2rem;">Загрузка товаров...</div>
+                </div>
+            </section>
+        </div>
+        
+        <footer class="shop-footer">
+            <div class="footer-content">
+                <span>© 2026 ЧГУ | Сувенирная лавка</span>
+                <span>Все права защищены</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
