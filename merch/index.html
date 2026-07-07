@@ -31,6 +31,11 @@
                     <div class="filter-sort-bar">
                         <div class="category-filters">
                             <button class="cat-btn active" data-category="all">Все товары</button>
+                            <button class="cat-btn" data-category="Одежда">👕 Одежда</button>
+                            <button class="cat-btn" data-category="Аксессуары">🧢 Аксессуары</button>
+                            <button class="cat-btn" data-category="Канцелярия">✏️ Канцелярия</button>
+                            <button class="cat-btn" data-category="Сувениры">🎁 Сувениры</button>
+                            <button class="cat-btn" data-category="Прочее">📦 Прочее</button>
                         </div>
                         
                         <div class="sort-bar">
@@ -76,8 +81,14 @@
             <h3 id="productModalTitle">Добавить товар</h3>
             <input type="hidden" id="productId">
             <input type="text" id="productName" placeholder="Название товара" class="modal-input">
-            <input type="text" id="productCategoryInput" placeholder="Категория (например: Одежда)" class="modal-input" list="categorySuggestions">
-            <datalist id="categorySuggestions"></datalist>
+            <input type="text" id="productCategoryInput" placeholder="Категория" class="modal-input" list="categorySuggestions">
+            <datalist id="categorySuggestions">
+                <option value="Одежда">
+                <option value="Аксессуары">
+                <option value="Канцелярия">
+                <option value="Сувениры">
+                <option value="Прочее">
+            </datalist>
             <input type="text" id="productImage" placeholder="URL изображения" class="modal-input">
             <input type="number" id="productPrice" placeholder="Цена" class="modal-input">
             <input type="text" id="productDescription" placeholder="Описание" class="modal-input">
