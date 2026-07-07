@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'mini_shop_products_v20';
+const STORAGE_KEY = 'mini_shop_products_v21';
 
 function formatPrice(value) {
     return new Intl.NumberFormat('ru-RU', {
