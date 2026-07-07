@@ -65,6 +65,7 @@ body {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
+    align-items: start;
 }
 
 .service-card {
@@ -146,6 +147,7 @@ body {
     border-bottom-color: #e31e24;
     color: #b11218;
 }
+
 .channel-link {
     display: block;
     color: #4b4b4b;
@@ -159,6 +161,7 @@ body {
 .channel-link:hover {
     color: #e31e24;
 }
+
 .footer-note {
     background: #f8f8f8;
     border-top: 1px solid #eaeaea;
