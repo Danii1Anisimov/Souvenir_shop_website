@@ -1,5 +1,6 @@
 let isAdmin = false;
 let editingProductId = null;
+let showArchived = false;
 
 function showLoginModal() {
     document.getElementById('loginModal').classList.add('show');
@@ -13,12 +14,19 @@ function hideLoginModal() {
     document.getElementById('loginModal').classList.remove('show');
 }
 
+function updateCategorySuggestions() {
+    const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
+    const datalist = document.getElementById('categorySuggestions');
+    datalist.innerHTML = categories.map(c => `<option value="${c}">`).join('');
+}
+
 function showProductModal(product) {
+    updateCategorySuggestions();
     editingProductId = product ? product.id : null;
     document.getElementById('productModalTitle').textContent = product ? 'Редактировать товар' : 'Добавить товар';
     document.getElementById('productId').value = product ? product.id : '';
     document.getElementById('productName').value = product ? product.name : '';
-    document.getElementById('productCategory').value = product ? product.category : 'clothing';
+    document.getElementById('productCategoryInput').value = product ? product.category : '';
     document.getElementById('productImage').value = product ? (product.image || '') : '';
     document.getElementById('productPrice').value = product ? (product.price || '') : '';
     document.getElementById('productDescription').value = product ? (product.description || '') : '';
@@ -44,7 +52,7 @@ function addVariantRow(label = '', price = '', inStock = true) {
     const row = document.createElement('div');
     row.className = 'variant-row';
     row.innerHTML = `
-        <input type="text" class="variant-label" placeholder="Название" value="${label}">
+        <input type="text" class="variant-label" placeholder="Название" value="${escapeHtml(label)}">
         <input type="number" class="variant-price" placeholder="Цена" value="${price}">
         <label style="display:flex;align-items:center;gap:0.2rem;font-size:0.7rem;">
             <input type="checkbox" class="variant-stock" ${inStock ? 'checked' : ''}> В наличии
@@ -72,7 +80,7 @@ function getVariantsFromForm() {
 function saveProduct() {
     const id = document.getElementById('productId').value;
     const name = document.getElementById('productName').value.trim();
-    const category = document.getElementById('productCategory').value;
+    const category = document.getElementById('productCategoryInput').value.trim();
     const image = document.getElementById('productImage').value.trim();
     const price = parseInt(document.getElementById('productPrice').value);
     const description = document.getElementById('productDescription').value.trim();
@@ -80,6 +88,7 @@ function saveProduct() {
     const variants = getVariantsFromForm();
     
     if (!name) return alert('Введите название товара');
+    if (!category) return alert('Введите категорию товара');
     if (!variants && isNaN(price)) return alert('Введите цену или добавьте варианты');
     
     const productData = {
@@ -105,6 +114,7 @@ function saveProduct() {
     
     saveProducts(products);
     hideProductModal();
+    updateCategoryButtons();
     renderProducts(products);
 }
 
@@ -112,6 +122,7 @@ function deleteProduct(id) {
     if (confirm('Удалить товар навсегда?')) {
         products = products.filter(p => p.id !== id);
         saveProducts(products);
+        updateCategoryButtons();
         renderProducts(products);
     }
 }
@@ -135,11 +146,38 @@ function restoreProduct(id) {
     }
 }
 
+function toggleArchived() {
+    showArchived = !showArchived;
+    renderProducts(products);
+}
+
+function updateCategoryButtons() {
+    const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
+    const container = document.querySelector('.category-filters');
+    
+    container.querySelectorAll('.cat-btn:not([data-category="all"])').forEach(b => b.remove());
+    
+    categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'cat-btn';
+        btn.dataset.category = cat;
+        btn.textContent = cat;
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentCategory = this.dataset.category;
+            renderProducts(products);
+        });
+        container.appendChild(btn);
+    });
+}
+
 function initAdmin() {
     document.getElementById('adminBtn').addEventListener('click', () => {
         if (isAdmin) {
             document.getElementById('adminBtn').classList.remove('active');
             isAdmin = false;
+            showArchived = false;
             renderProducts(products);
         } else {
             showLoginModal();
@@ -153,6 +191,7 @@ function initAdmin() {
             isAdmin = true;
             document.getElementById('adminBtn').classList.add('active');
             hideLoginModal();
+            updateCategoryButtons();
             renderProducts(products);
         } else {
             const error = document.getElementById('loginError');
@@ -167,6 +206,14 @@ function initAdmin() {
     document.getElementById('productCancel').addEventListener('click', hideProductModal);
     
     document.getElementById('addVariant').addEventListener('click', () => addVariantRow());
+    
+    document.getElementById('scrollTopBtn').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    document.getElementById('scrollBottomBtn').addEventListener('click', () => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
 }
 
 initAdmin();
