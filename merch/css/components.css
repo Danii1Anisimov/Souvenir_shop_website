@@ -505,3 +505,24 @@
         font-size: 0.6rem;
     }
 }
+.admin-add-card {
+    border: 2px dashed #e31e24;
+    background: #fef2f2;
+    cursor: pointer;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-add-card:hover {
+    background: #fee2e2;
+}
+
+.admin-add-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e31e24;
+}
