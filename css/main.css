@@ -151,7 +151,7 @@ body {
 .channels-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.8rem;
     margin-top: 0.3rem;
 }
 
@@ -160,7 +160,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    gap: 0.3rem;
+    gap: 0.25rem;
     transition: transform 0.2s;
 }
 
@@ -169,11 +169,11 @@ body {
 }
 
 .channel-logo {
-    width: 3rem;
-    height: 3rem;
+    width: 2.2rem;
+    height: 2.2rem;
     border-radius: 50%;
     background: #f1f5f9;
-    padding: 0.6rem;
+    padding: 0.4rem;
     object-fit: contain;
     transition: background 0.2s, transform 0.2s;
 }
@@ -184,7 +184,7 @@ body {
 }
 
 .icon-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     color: #64748b;
     text-transform: uppercase;
