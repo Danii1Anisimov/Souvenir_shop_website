@@ -17,15 +17,21 @@ function renderProducts(products) {
         return;
     }
 
-    const categoryNames = {
-        'clothing': 'Одежда',
-        'accessories': 'Аксессуары',
-        'stationery': 'Канцелярия',
-        'souvenirs': 'Сувениры',
-        'other': 'Прочее'
-    };
+    grid.innerHTML = '';
 
-    grid.innerHTML = sorted.map(product => {
+    if (isAdmin) {
+        const adminBar = document.createElement('div');
+        adminBar.style.cssText = 'grid-column:1/-1;display:flex;gap:0.5rem;align-items:center;';
+        adminBar.innerHTML = `
+            <button class="modal-btn small ${showArchived ? 'primary' : ''}" onclick="toggleArchived()">
+                ${showArchived ? '📋 Обычные' : '📦 Архив'} ${showArchived ? '' : ''}
+            </button>
+            <span style="font-size:0.75rem;color:#64748b;">${showArchived ? 'Просмотр архива' : 'Обычный режим'}</span>
+        `;
+        grid.appendChild(adminBar);
+    }
+
+    sorted.forEach(product => {
         const img = product.image || 'https://placehold.co/400x400/e9eef3/8b9cb0?text=No+Image';
         const productAvailable = isProductAvailable(product);
         const isFullyOutOfStock = !productAvailable;
@@ -35,7 +41,6 @@ function renderProducts(products) {
         let variantsHtml = '';
         
         if (product.variants) {
-            const availableVariants = product.variants.filter(v => v.inStock !== false);
             const firstAvailable = product.variants.find(v => v.inStock !== false);
             
             variantsHtml = `
@@ -59,33 +64,57 @@ function renderProducts(products) {
             priceHtml = `<div class="price">${formatPrice(product.price)}</div>`;
         }
 
-        return `
-            <div class="product-card ${isFullyOutOfStock ? 'out-of-stock' : ''} ${isArchived ? 'archived' : ''}" data-id="${escapeHtml(product.id)}">
-                ${isFullyOutOfStock && !isArchived ? '<div class="out-of-stock-badge">Нет в наличии</div>' : ''}
-                ${isArchived ? '<div class="out-of-stock-badge archived-badge">В архиве</div>' : ''}
-                <div class="product-image-wrapper">
-                    <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://placehold.co/400x400/e9eef3/8b9cb0?text=Error'" class="${isFullyOutOfStock && !isArchived ? 'out-of-stock-image' : ''}">
-                </div>
-                <h3>${escapeHtml(product.name)}</h3>
-                ${priceHtml}
-                ${variantsHtml}
-                ${product.description ? `<p class="product-description">${escapeHtml(product.description)}</p>` : ''}
-                <span class="product-category">${categoryNames[product.category] || 'Прочее'}</span>
-                ${isAdmin ? `
-                    <div class="admin-actions show">
-                        <button class="modal-btn small" onclick="event.stopPropagation(); showProductModal(products.find(p=>p.id==='${product.id}'))">✏️</button>
-                        ${product.archived ? 
-                            `<button class="modal-btn small primary" onclick="event.stopPropagation(); restoreProduct('${product.id}')">↩️</button>` :
-                            `<button class="modal-btn small" onclick="event.stopPropagation(); archiveProduct('${product.id}')">📦</button>`
-                        }
-                        <button class="modal-btn small danger" onclick="event.stopPropagation(); deleteProduct('${product.id}')">🗑️</button>
-                    </div>
-                ` : ''}
+        const card = document.createElement('div');
+        card.className = `product-card ${isFullyOutOfStock && !isArchived ? 'out-of-stock' : ''} ${isArchived ? 'archived' : ''}`;
+        card.dataset.id = product.id;
+        card.innerHTML = `
+            ${isFullyOutOfStock && !isArchived ? '<div class="out-of-stock-badge">Нет в наличии</div>' : ''}
+            ${isArchived ? '<div class="out-of-stock-badge archived-badge">В архиве</div>' : ''}
+            <div class="product-image-wrapper">
+                <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://placehold.co/400x400/e9eef3/8b9cb0?text=Error'" class="${isFullyOutOfStock && !isArchived ? 'out-of-stock-image' : ''}">
             </div>
+            <h3>${escapeHtml(product.name)}</h3>
+            ${priceHtml}
+            ${variantsHtml}
+            ${product.description ? `<p class="product-description">${escapeHtml(product.description)}</p>` : ''}
+            <span class="product-category">${escapeHtml(product.category) || 'Без категории'}</span>
+            ${isAdmin ? `
+                <div class="admin-actions show">
+                    <button class="modal-btn small" id="edit-${product.id}">✏️</button>
+                    ${product.archived ? 
+                        `<button class="modal-btn small primary" id="restore-${product.id}">↩️</button>` :
+                        `<button class="modal-btn small" id="archive-${product.id}">📦</button>`
+                    }
+                    <button class="modal-btn small danger" id="delete-${product.id}">🗑️</button>
+                </div>
+            ` : ''}
         `;
-    }).join('');
+        
+        grid.appendChild(card);
+        
+        if (isAdmin) {
+            card.querySelector(`#edit-${product.id}`).addEventListener('click', (e) => {
+                e.stopPropagation();
+                showProductModal(products.find(p => p.id === product.id));
+            });
+            if (!product.archived) {
+                card.querySelector(`#archive-${product.id}`).addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    archiveProduct(product.id);
+                });
+            } else {
+                card.querySelector(`#restore-${product.id}`).addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    restoreProduct(product.id);
+                });
+            }
+            card.querySelector(`#delete-${product.id}`).addEventListener('click', (e) => {
+                e.stopPropagation();
+                deleteProduct(product.id);
+            });
+        }
+    });
 
-    // Кнопка добавления товара для админа
     if (isAdmin) {
         const addCard = document.createElement('div');
         addCard.className = 'product-card admin-add-card';
@@ -99,7 +128,6 @@ function renderProducts(products) {
         grid.appendChild(addCard);
     }
 
-    // Обработчик изменения варианта (только для доступных)
     document.querySelectorAll('.variant-option input[type="radio"]:not([disabled])').forEach(radio => {
         radio.addEventListener('change', function() {
             const productId = this.name.replace('variant-', '');
