@@ -1,7 +1,7 @@
 .admin-button {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 80px;
     background: white;
     border: 2px solid #e31e24;
     color: #e31e24;
@@ -28,6 +28,40 @@
 .admin-button.active {
     background: #e31e24;
     color: white;
+}
+
+.scroll-button {
+    position: fixed;
+    right: 20px;
+    background: white;
+    border: 2px solid #475569;
+    color: #475569;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    background: #475569;
+    color: white;
+}
+
+.scroll-top {
+    top: 80px;
+}
+
+.scroll-bottom {
+    top: 135px;
 }
 
 .modal {
@@ -201,13 +235,34 @@
     border-radius: 6px;
 }
 
+.admin-archive-toggle {
+    margin-left: 0.5rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.7rem;
+}
+
 @media (max-width: 640px) {
     .admin-button {
         top: 10px;
-        right: 10px;
+        right: 70px;
         width: 36px;
         height: 36px;
         font-size: 1rem;
+    }
+    
+    .scroll-button {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        right: 10px;
+    }
+    
+    .scroll-top {
+        top: 60px;
+    }
+    
+    .scroll-bottom {
+        top: 105px;
     }
     
     .modal-content {
