@@ -42,7 +42,7 @@
             if (!info) return;
 
             if (info.url && info.url !== '#') {
-                window.location.href = info.url;
+                 window.open(info.url, '_blank');
             } else {
                 showMessage(`🔹 ${info.name} — в разработке`);
             }
