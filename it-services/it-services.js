@@ -1,1 +1,59 @@
+(function() {
+    const toast = document.getElementById('toastMsg');
 
+    function showMessage(text, duration = 2300) {
+        if (!toast) return;
+        toast.textContent = text;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, duration);
+    }
+
+    const serviceData = {
+        'student': { name: 'Личный кабинет', url: '#' },
+        'schedule': { name: 'Расписание', url: '#' },
+        'events': { name: 'Мероприятия', url: '#' },
+        'requests': { name: 'Электронные заявки', url: '#' },
+        'library': { name: 'Электронная библиотека', url: '#' },
+        'mail': { name: 'Корпоративная почта', url: '#' }
+    };
+
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('.card-link')) return;
+
+            const key = card.getAttribute('data-type');
+            const info = serviceData[key];
+
+            if (!info) return;
+
+            if (info.url && info.url !== '#') {
+                window.location.href = info.url;
+            } else {
+                showMessage(`🔹 ${info.name} — в разработке`);
+            }
+        });
+    });
+
+    document.querySelectorAll('.card-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+
+            const card = link.closest('.service-card');
+            const key = card.getAttribute('data-type');
+            const info = serviceData[key];
+
+            if (!info) return;
+
+            if (info.url && info.url !== '#') {
+                window.location.href = info.url;
+            } else {
+                showMessage(`🔹 ${info.name} — в разработке`);
+            }
+        });
+    });
+
+    console.log('🚀 IT-сервисы ЧГУ активированы');
+})();
