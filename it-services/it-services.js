@@ -12,7 +12,7 @@
 
     const serviceData = {
         'student': { name: 'Личный кабинет', url: 'https://lk.chsu.ru/login' },
-        'schedule': { name: 'Расписание', url: '#' },
+        'schedule': { name: 'Расписание', url: 'https://www.chsu.ru/raspisanie/' },
         'events': { name: 'Мероприятия', url: '#' },
         'requests': { name: 'Электронные заявки', url: '#' },
         'library': { name: 'Электронная библиотека', url: '#' },
