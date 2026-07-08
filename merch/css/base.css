@@ -15,6 +15,7 @@ body {
 .shop-header {
   position: relative;
   width: 100%;
+  max-width: 1095px;
   height: 160px; 
   display: flex;
   flex-direction: column;
@@ -22,7 +23,7 @@ body {
   justify-content: flex-end;
   border-radius: 10px;
   overflow: hidden;
-  margin: 0 0 10px 0; 
+  margin: 0 auto 10px auto; 
   background-image: url('../images/chgu-3461.jpg') !important;
   background-size: cover;
   background-position: left top; 
