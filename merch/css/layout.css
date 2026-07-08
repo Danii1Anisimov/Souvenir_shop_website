@@ -91,6 +91,7 @@
 }
 
 /* Мобильные устройства */
+/* Мобильные устройства */
 @media (max-width: 640px) {
     .app-layout {
         margin-top: 60px;
@@ -110,14 +111,13 @@
     
     .category-filters {
         width: 100%;
-        overflow-x: auto;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        gap: 0.4rem;
         padding-bottom: 0.3rem;
+        overflow-x: visible;
     }
     
     .cat-btn {
-        flex-shrink: 0;
-        white-space: nowrap;
         padding: 0.4rem 0.7rem;
         font-size: 0.7rem;
     }
@@ -139,6 +139,25 @@
     .controls-bar {
         padding: 0.8rem;
         border-radius: 18px;
+    }
+}
+
+/* Маленькие мобильные устройства */
+@media (max-width: 400px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .app-layout {
+        margin-top: 50px;
+        padding: 0 0.3rem 1rem;
+    }
+    
+    .search-input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+        border-radius: 12px;
     }
 }
 
