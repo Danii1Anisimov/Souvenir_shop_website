@@ -46,7 +46,6 @@ body {
     justify-content: center; 
     align-items: center;
     flex-direction: column;
-    justify-content: flex-end;
     padding: 0 4rem 3rem 4rem;
     z-index: 1;
 }
