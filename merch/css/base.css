@@ -15,7 +15,7 @@ body {
 .shop-header {
   position: relative;
   width: 100%;
-  max-width: 1095px;
+  max-width: 1400px;
   height: 160px; 
   display: flex;
   flex-direction: column;
