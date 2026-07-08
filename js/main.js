@@ -14,6 +14,7 @@
         'it-services': { 
             name: 'IT-сервисы', 
             description: 'Личный кабинет, расписание, электронные заявки'
+            url: 'it-services/index.html'
         },
         'official-channels': { 
             name: 'Официальные каналы связи', 
