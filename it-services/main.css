@@ -196,3 +196,22 @@ body {
     opacity: 1;
     transform: translateX(-50%) scale(1);
 }
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #e31e24;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
