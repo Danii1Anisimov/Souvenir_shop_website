@@ -35,19 +35,20 @@ body {
     padding: 0 4rem;
 }
 
-.header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(95deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 4rem 3rem 4rem;
-    z-index: 1;
+.header-overlay { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: linear-gradient(95deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%); 
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: center; 
+  flex-direction: column; 
+  padding: 3rem 4rem 92.5px 4rem; 
+  z-index: 1; 
+  box-sizing: border-box; 
 }
 
 .header-overlay p {
