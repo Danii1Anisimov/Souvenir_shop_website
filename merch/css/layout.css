@@ -94,7 +94,7 @@
 /* Мобильные устройства */
 @media (max-width: 640px) {
     .app-layout {
-        margin-top: 60px;
+        margin-top: 5px;
         padding: 0 0.5rem 1.5rem;
     }
     
@@ -150,7 +150,7 @@
     }
     
     .app-layout {
-        margin-top: 50px;
+        margin-top: 5px;
         padding: 0 0.3rem 1rem;
     }
     
@@ -169,7 +169,7 @@
     }
     
     .app-layout {
-        margin-top: 50px;
+        margin-top: 5px;
         padding: 0 0.3rem 1rem;
     }
     
