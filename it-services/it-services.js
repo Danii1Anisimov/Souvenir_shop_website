@@ -1,6 +1,6 @@
 (function() {
     const toast = document.getElementById('toastMsg');
-
+    
     function showMessage(text, duration = 2300) {
         if (!toast) return;
         toast.textContent = text;
@@ -18,6 +18,19 @@
         'library': { name: 'Электронная библиотека', url: '#' },
         'mail': { name: 'Корпоративная почта', url: '#' }
     };
+
+     function addBackButton() {
+        const header = document.querySelector('.brand-header .header-overlay');
+        if (header && !document.querySelector('.back-button')) {
+            const backBtn = document.createElement('a');
+            backBtn.href = '../index.html';
+            backBtn.className = 'back-button';
+            backBtn.innerHTML = '← На главную';
+            header.prepend(backBtn);
+        }
+    }
+
+    addBackButton();
 
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('click', (e) => {
