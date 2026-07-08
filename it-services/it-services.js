@@ -16,7 +16,7 @@
         'events': { name: 'Мероприятия', url: '#' },
         'requests': { name: 'Электронные заявки', url: '#' },
         'library': { name: 'Электронная библиотека', url: '#' },
-        'mail': { name: 'Корпоративная почта', url: '#' }
+        'mail': { name: 'Корпоративная почта', url: ' https://biz.mail.ru/login/chsu.ru' }
     };
 
      function addBackButton() {
