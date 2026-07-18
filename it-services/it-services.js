@@ -14,7 +14,7 @@
         'student': { name: 'Личный кабинет', url: 'https://lk.chsu.ru/login' },
         'schedule': { name: 'Расписание', url: 'https://www.chsu.ru/raspisanie/' },
         'events': { name: 'Мероприятия', url: 'https://www.chsu.ru/meropriyatiya/' },
-        'requests': { name: 'Электронные заявки', url: '#' },
+        'requests': { name: 'Электронные заявки', url: 'https://lk.chsu.ru/services/my/requests' },
         'library': { name: 'Электронная библиотека', url: 'https://www.chsu.ru/struktura-chgu/administrativnye-podrazdeleniya/biblioteka/elektronnye-resursy/ebs/' },
         'mail': { name: 'Корпоративная почта', url: ' https://biz.mail.ru/login/chsu.ru' }
     };
