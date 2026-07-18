@@ -37,7 +37,7 @@
             const serviceKey = card.getAttribute('data-service');
             const info = serviceData[serviceKey];
             
-            if ((serviceKey === 'merch' || serviceKey === 'it-services') && info.url) {
+            if ((serviceKey === 'merch' || serviceKey === 'it-services' || serviceKey === 'bots') && info.url) {
                 showMessage(`✨ ${info.name} — загрузка...`);
                 setTimeout(() => {
                     window.location.href = info.url;
